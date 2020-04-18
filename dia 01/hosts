@@ -1,3 +1,5 @@
-
+[webservers]
 webserver-01 ansible_ssh_pass=<mypassword>  ansible_ssh_user=<myusername>
+
+[db]
 webserver-02 ansible_ssh_pass=<mypassword>  ansible_ssh_user=<myusername>
