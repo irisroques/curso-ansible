@@ -1,0 +1,33 @@
+---
+- hosts: webservers
+  become: yes
+  remote_user: iris
+  tasks: 
+  - name: Instalando o Nginx
+    apt: 
+      name:  nginx
+      state: latest
+      update_cache:  yes
+  - name:  Habilitando o start do Nginx no boot
+    service:
+      name:  nginx
+      enabled:  yes
+  - name: Iniciando o Nginx
+    service:
+      name:  nginx
+      state:  started
+  - name: Copiando html personalizado
+    copy: 
+      src: index.html
+      dest: /var/www/html/index.html
+
+- handlers:
+  - name: Restartando o Nginx
+    service: 
+      name: nginx
+      state: restarted
+
+
+
+
+
